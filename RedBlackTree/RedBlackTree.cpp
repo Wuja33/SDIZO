@@ -78,12 +78,10 @@ Node *RedBlackTree::successor(Node *node) {
 
         if(node->right != &nil){
             //SZUKANIE MINIMALNEGO WÊZ£A
-            if (node->right != &nil)
+            node = node->right;
+            while (node->left != &nil)  //dopóki nie natrafisz na stra¿nika, przechodŸ do lewego poddrzewa
             {
-                while (node->left != &nil)  //dopóki nie natrafisz na stra¿nika, przechodŸ do lewego poddrzewa
-                {
-                    node = node->left;
-                }
+                node = node->left;
             }
             return node;
         }

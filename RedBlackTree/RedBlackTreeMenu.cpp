@@ -81,6 +81,7 @@ void RedBlackTreeMenu::showMenuOptionTreeA() {
 }
 
 void RedBlackTreeMenu::showMenuOptionTreeS() {
+    Generator gen;
     RedBlackTree* tree = new RedBlackTree();
     int chooseOption = 0;
     int chooseNumber = 0;

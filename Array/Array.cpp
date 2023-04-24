@@ -40,6 +40,7 @@ void Array::addFirst(int numberToAdd)
 bool Array::addIn(int numberToAdd, int index)
 {
     timer.run();
+
 	if (wsk != nullptr && (index < size && index >= 0))						//jeœli istnieje tablica i indeks mieœci siê pomiêdzy (0 - size)
 	{
 		int* newWsk = new int[size + 1];	//utworzenie nowej tablicy o rozmiarze size + 1
@@ -62,12 +63,13 @@ bool Array::addIn(int numberToAdd, int index)
         timer.stop();
         return true;
 	}
-	else if(index == 0)
+	else if(index == size)
 	{
-		wsk = new int[size + 1];		//utworzenie nowej tablicy o rozmiarze size + 1
-		wsk[0] = numberToAdd;			//dodanie podanej danej na sam pocz¹tek tablicy
-		size++;							//zwiêkszenie wielkoœci tablicy o 1
         timer.stop();
+        if (index==0)
+            addFirst(numberToAdd);
+        else
+            addLast(numberToAdd);
         return true;
 	}
     timer.stop();
@@ -140,7 +142,7 @@ bool Array::deleteFirst()
 bool Array::deleteIn(int index)
 {
     timer.run();
-	if (wsk != nullptr && size > 1 && (index < size && index >= 0))		//jeœli istnieje tablica i jest wiêksza ni¿ 1 oraz indeks mieœci siê pomiêdzy (0 - size)
+	if (wsk != nullptr && (index < size && index >= 0))		//jeœli istnieje tablica i jest wiêksza ni¿ 1 oraz indeks mieœci siê pomiêdzy (0 - size)
 	{
 		int* newWsk = new int[size - 1];			//utworzenie nowej tablicy o rozmiarze size - 1
 
@@ -160,21 +162,18 @@ bool Array::deleteIn(int index)
 
         timer.stop();
 		return true;
-	}
-	else if (index == 0 && size == 1)
-	{
-        delete[] wsk;
-		size--;
-        wsk = nullptr;
+	}else if(index == size - 1)
+    {
+        timer.stop();
+        if (index==0)
+            deleteFirst();
+        else
+            deleteLast();
+        return true;
+    }
 
-        timer.stop();
-		return true;
-	}
-	else
-	{
-        timer.stop();
-		return false;
-	}
+    timer.stop();
+    return false;
 }
 
 bool Array::deleteLast()

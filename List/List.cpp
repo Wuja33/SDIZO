@@ -37,9 +37,15 @@ bool List::pushIn(int value, int index) {
     timer.run();
 
     if (index==0)
+    {
+        timer.stop();
         pushFront(value);
-    else if (index == size-1)
+    }
+    else if (index == size)
+    {
+        timer.stop();
         pushTail(value);
+    }
     else
     {
         ListElement* oldElement = findElement(index);
@@ -53,8 +59,8 @@ bool List::pushIn(int value, int index) {
         oldElement->back->next = newElement;
         oldElement->back = newElement;
         size ++;
+        timer.stop();
     }
-    timer.stop();
 
     return true;
 }
@@ -103,18 +109,14 @@ bool List::popIn(int index) {
     timer.run();
 
     if (index == 0) {
+        timer.stop();
         if (!popFirst())
-        {
-            timer.stop();
             return false;
-        }
     }
-    else if(index == size-1) {
+    else if(index == size - 1) {
+        timer.stop();
         if (!popLast())
-        {
-            timer.stop();
             return false;
-        }
     }
     else
     {
@@ -128,8 +130,8 @@ bool List::popIn(int index) {
         deletedElement->next->back = deletedElement->back;
         delete deletedElement;
         size--;
+        timer.stop();
     }
-    timer.stop();
     return true;
 }
 
