@@ -376,14 +376,13 @@ void RedBlackTree::remove(Node *node) {
                     help = nodeReplace->parent->left;
                 }
 
-                if (help->right->isRed && help->left->isRed) {
+                if (!help->right->isRed && !help->left->isRed) {
                     help->isRed = true;
                     nodeReplace = nodeReplace->parent;
                 }
-
                 else
                 {
-                    if (help->left->isRed) {
+                    if (!help->left->isRed) {
                         help->right->isRed = false;
                         help->isRed = true;
                         rotateLeft(help);
@@ -508,14 +507,14 @@ void RedBlackTree::remove(int key) {
                     help = nodeReplace->parent->left;
                 }
 
-                if (help->right->isRed && help->left->isRed) {
+                if (!help->right->isRed && !help->left->isRed) {
                     help->isRed = true;
                     nodeReplace = nodeReplace->parent;
                 }
 
                 else
                 {
-                    if (help->left->isRed) {
+                    if (!help->left->isRed) {
                         help->right->isRed = false;
                         help->isRed = true;
                         rotateLeft(help);
