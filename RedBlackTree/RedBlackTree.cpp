@@ -324,7 +324,7 @@ void RedBlackTree::remove(Node *node) {
 
                 if (help->isRed) {
                     help->isRed = false;
-                    nodeReplace->parent->isRed = false;
+                    nodeReplace->parent->isRed = true;
                     rotateLeft(nodeReplace->parent);
                     help = nodeReplace->parent->right;                    //powrót do pocz¹tkowych ustawieñ
                 }
@@ -446,7 +446,7 @@ void RedBlackTree::remove(int key) {
         /// NAPRAWIANIE W£ASNOŒCI DRZEWA ///
 
         Node *help;
-        while (nodeReplace != root && !nodeReplace->isRed) {            //wykonuj dopóki nie bêdzie to korzeñ, oraz wêze³ nodeReplace nie jest czerwony
+        while (nodeReplace != root && !nodeReplace->isRed) {//wykonuj dopóki nie bêdzie to korzeñ, oraz wêze³ nodeReplace nie jest czerwony
             if (nodeReplace == nodeReplace->parent->left) {             //jesli nodeReplace jest lewym synem
                 help = nodeReplace->parent->right;                      //ustaw help jako prawego syna nodeReplace
                 /// PRZYPADEK 1 ///
@@ -456,7 +456,7 @@ void RedBlackTree::remove(int key) {
 
                 if (help->isRed) {
                     help->isRed = false;
-                    nodeReplace->parent->isRed = false;
+                    nodeReplace->parent->isRed = true;
                     rotateLeft(nodeReplace->parent);
                     help = nodeReplace->parent->right;                    //powrót do pocz¹tkowych ustawieñ
                 }
