@@ -16,3 +16,4 @@ d) Drzewo poszukiwań binarnych (BST),
 
 e) Drzewo czerwono-czarne. 
 
+Ocena - Kod: 4.9 , Sprawozdanie: 4.5
